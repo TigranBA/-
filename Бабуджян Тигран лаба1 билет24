@@ -1,0 +1,39 @@
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+struct Point {
+    double x;
+    double y;
+};
+double distance(Point A, Point B) {
+    return sqrt(pow(A.x - B.x, 2) + pow(A.y - B.y, 2));
+}
+bool isRectangle(Point A, Point B, Point C, Point D) {
+    double AB = distance(A, B);
+    double BC = distance(B, C);
+    double CD = distance(C, D);
+    double DA = distance(D, A);
+    double AC = distance(A, C);
+    double BD = distance(B, D);
+    bool sidesEqual = (AB == CD) && (BC == DA);
+    bool diagonalsEqual = (AC == BD);
+    return sidesEqual && diagonalsEqual;
+}
+int main() {
+    Point A, B, C, D;
+    cout << "Введите координаты точки A (x, y): ";
+    cin >> A.x >> A.y;
+    cout << "Введите координаты точки B (x, y): ";
+    cin >> B.x >> B.y;
+    cout << "Введите координаты точки C (x, y): ";
+    cin >> C.x >> C.y;
+    cout << "Введите координаты точки D (x, y): ";
+    cin >> D.x >> D.y;
+    if (isRectangle(A, B, C, D)) {
+ cout << "Точки образуют прямоугольник." << endl;
+    } else {
+cout << "Точки не образуют прямоугольник." << endl;
+    }
+    return 0;
+}
